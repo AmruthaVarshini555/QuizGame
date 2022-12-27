@@ -5,12 +5,27 @@
 #define BUFFER_SIZE 20
 #define PSWD_SIZE 8
 #define QUESTION_BUFFER_SIZE 200
-#define MANAGE_COORDINATOR 1
-#define MANAGE_CONTESTANT 2
-#define EXIT 3
+#define EXIT 0
 #define ADMIN 1
 #define COORDINATOR 2
 #define CONTESTANT 3
+#define MANAGE_COORDINATOR 1
+#define MANAGE_CONTESTANT 2
+#define CREATE 1
+#define UPDATE 2
+#define DELETE 3
+#define DISPLAY 4
+#define PREVIOUS 5
+#define DELETE_CONTESTANT 1
+#define VIEW_CONTESTANT 2
+#define LOGOUT 3
+#define UPDATE_COORD 1
+#define NEW_QUIZ 2
+#define UPDATE_QUIZ 3
+#define DELETE_QUIZ 4
+#define DISPLAY_QUIZ 5
+
+
 typedef struct admin_data
 {
 	char user_name[BUFFER_SIZE];
@@ -36,7 +51,7 @@ typedef struct contestant
 	char phone_num[BUFFER_SIZE];
 	char pswd[BUFFER_SIZE];
 	int first_score;
-	int second_socre;
+	int second_score;
 	int check;
 	int check_2;/
 	struct contestant *next;
@@ -47,7 +62,7 @@ typedef struct question_ans
 	int q_num;
 	char question[QUESTION_BUFFER_SIZE];
 	char ans_string[4][BUFFER_SIZE];
-	int ans_intiger[4];
+	int ans_integer[4];
 	char ans_str[BUFFER_SIZE];
 	int ans_int;
 	int check_flag;
@@ -78,23 +93,25 @@ void adding_question_to_file(char *);
 question_ans *create_list_for_QA(question_ans*,question_ans);
 question_ans *update_quiz(question_ans*,char *str);
 question_ans *delete_question(question_ans * , int);
-void save_QA_info_into_file(question_ans*);
+void save_QA_info_into_file(question_ans*,char *str);
+void first_round_of_quiz_game(contestant*,int);
+void second_round_of_quiz_game(contestant*,int);
 
 contestant *Contestant();
 contestant *registration_contestant(contestant*);
 void adding_contestant_to_file();
 void save_contestant_data_into_file(contestant *);
 contestant data_extraction_from_contestant_file(char*, contestant);
-contestant *play_quiz(char*,char*,contestant*,question_ans*);
-contestant *continue_quize_game(char * , char *,contestant *,question_ans *);
+contestant *play_quiz(char*,char*,contestant*);
+contestant *continue_quize_game(char *, char *,contestant *,question_ans *);
 void save_score_to_file(contestant*);
 void check_score_contestants(contestant*);
 void rules();
 
-int intiger_validation(char *);
+int integer_validation(char *);
 int alpha_validator(char *);
 int password_validation(char *);
 int phone_validation(char *);
 int email_validation(char *);
 int ans(int);
-int int_ans_choice(int n , int m);
+int int_ans_choice(int,int);
