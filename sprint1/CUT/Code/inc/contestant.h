@@ -5,28 +5,17 @@ typedef struct contestant
 {
 	char user_id[BUFFER_SIZE];
 	char user_name[BUFFER_SIZE];
-	char email_id[BUFFER_SIZE];
+	char email_id[BUFFER_SIZE] ;
 	char phone_num[BUFFER_SIZE];
 	char pswd[BUFFER_SIZE];
 	int first_score;
-	int second_score;
-	int check;
-	int check_2;/
-	struct contestant *next;
+	int second_socre ;
+	int check ;
+	int check_2 ;
+	struct contestant *next ;
 }contestant;
 
-typedef struct question_ans
-{
-	int q_num;
-	char question[QUESTION_BUFFER_SIZE];
-	char ans_string[4][BUFFER_SIZE];
-	int ans_integer[4];
-	char ans_str[BUFFER_SIZE];
-	int ans_int;
-	int check_flag;
-	struct question_ans *next;
-}question_ans;
-
+//contestant functions
 contestant *Contestant();
 contestant *registration_contestant(contestant*);
 void adding_contestant_to_file();
