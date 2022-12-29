@@ -1,6 +1,6 @@
-INC = /home/system/Project/QuizGame/sprint1/CUT/Code/inc
-SRC = /home/system/Project/QuizGame/sprint1/CUT/Code/src
-OBJ = /home/system/Project/QuizGame/sprint1/CUT/Code/obj
+INC = /home/system/abcd/Project/QuizGame/sprint1/CUT/Code/inc
+SRC = /home/system/abcd/Project/QuizGame/sprint1/CUT/Code/src
+OBJ = /home/system/abcd/Project/QuizGame/sprint1/CUT/Code/obj
 
 CFLAGS = -c -g -Wall
 LFLAGS = -o
