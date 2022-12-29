@@ -2,6 +2,8 @@
 #include<stdio.h>
 #include<string.h>
 #include"admin.h"
+#include"contestant.h"
+#include"coordinator.h"
 #include <ctype.h>
 //integer validations
 int integer_validation(char *str)
@@ -44,7 +46,7 @@ int alpha_validator(char *s)
         }
         return 1;
 }
-
+//Phone number validation
 int phone_validation(char *str)
 {
 	
