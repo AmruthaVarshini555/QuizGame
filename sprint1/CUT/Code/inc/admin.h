@@ -12,7 +12,7 @@
 #define MANAGE_COORDINATOR 1
 #define MANAGE_CONTESTANT 2
 #define LOGOUT 3
-#define EXIT 4
+
 //Declaration of LL
 typedef struct admin_data
 {
