@@ -4,9 +4,10 @@
 #include<stdlib.h>
 //Declaring macros
 #define UPDATE_COORDINATOR 1
-#define CREATE_QUIZ 2
+#define ADD_QUIZ 2
 #define UPDATE_QUIZ 3
 #define DELETE_QUIZ 4
+#define DISPLAY_QUIZ 5
 #define EXIT 0
 
 //Structure for coordinator
