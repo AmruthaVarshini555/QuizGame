@@ -9,12 +9,10 @@
 #define ADMIN 1
 #define COORDINATOR 2
 #define CONTESTANT 3
-#define ADD_COORDINATOR 1
-#define UPDATE_COORDINATOR 2
-#define DELETE_COORDINATOR 3
-#define DISPLAY_COORDINATOR 4
-#define PREVIOUS 5
-
+#define MANAGE_COORDINATOR 1
+#define MANAGE_CONTESTANT 2
+#define LOGOUT 3
+#define EXIT 4
 //Declaration of LL
 typedef struct admin_data
 {
