@@ -4,6 +4,8 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include"admin.h"
+#incldue"contestant.h"
+#include"coordinator.h"
 //This function is used to give design to the program
 void design()
 {
