@@ -2,7 +2,8 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include"header.h"
+#include<unistd.h>
+#include"admin.h"
 //This function is used to give design to the program
 void design()
 {
@@ -42,10 +43,9 @@ int main_menu()
                                          else
                                              printf("use only characters\n");
                                         }
-                                        printf("enter the password\n");
                                         while(1)
                                         {
-                                                scanf("%s",password);
+                                                strcpy(password,getpass("Enter the password:"));
 						if(strcmp(admin_root.user_name ,user ) == 0)
                                         	{
                                                 	if(strcmp(admin_root.pswd ,password ) == 0)
