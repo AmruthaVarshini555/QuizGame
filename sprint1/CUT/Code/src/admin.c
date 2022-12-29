@@ -1,10 +1,11 @@
-#include"admin.h"
-
 //Admin module of quiz program
+#include"admin.h"
+#include"contestant.h"
+#include"coordinator.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"prototype.h"
+
 coordinator *c_root = NULL ;
 extern contestant *co_root ;
 int len_list(coordinator *p)
@@ -46,7 +47,7 @@ void admin()
 		ch =int_ans_choice(1,3);
 		switch(ch)
 		{
-			case 1:
+			case MANAGE_COORDINATOR:
 				while(1)
 				{
 					design();
@@ -108,7 +109,7 @@ void admin()
 						break;
 				}	
 				break;	
-			case 2://Managing contestant details
+			case MANAGE_CONTESTANT://Managing contestant details
 				while(1)
 				{
 					design();
@@ -120,7 +121,7 @@ void admin()
 					ch =int_ans_choice(1,3);
 					switch(ch)
 					{
-						case 1:
+						case DELETE_CONTESTANT:
 							printf("enter user-id \n");
 							while(1)
 							{
@@ -133,9 +134,9 @@ void admin()
 							co_root = delete_contestant(co_root ,user_id);
 							save_contestant_data_into_file(co_root);
 							break ;
-						case 2: view_contestant();
+						case VIEW_CONTESTANT: view_contestant();
 							break;
-						case 3:
+						case PREVIOUS:
 							exit_flag_2 = 1;	
 					}
 					
@@ -144,7 +145,7 @@ void admin()
 				}
 				break ;
 				
-			case 3:
+			case LOGOUT:
 				exit_flag_3 = 1;
 				break;
 			case EXIT: exit(0);
@@ -264,10 +265,9 @@ coordinator *update_coordinator(char *str,coordinator *source)
 					else
 						printf("enter correct format of mail\n");
 				}	
-				printf("enter the password\n");
 				while(1)
 				{
-					scanf("%s",p->pswd);
+					strcpy(p->pswd,getpass("Enter the Password:"));
 					if(password_validation(p->pswd))
 						break;
 					else 
@@ -301,7 +301,7 @@ int* len_of_list_coordinator(coordinator  *source ,int *index)
 		printf("list is empty\n") ;
 		return NULL ;
 	}
-	coordinator   *p = source ;
+	coordinator *p = source ;
 	while(p!=NULL)
 	{
 		count ++;	
