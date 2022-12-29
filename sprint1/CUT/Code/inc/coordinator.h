@@ -1,6 +1,14 @@
 //Header file for Coordinator
 #include<stdio.h>
-#include"admin.h"
+#include<string.h>
+#include<stdlib.h>
+//Declaring macros
+#define UPDATE_COORDINATOR 1
+#define CREATE_QUIZ 2
+#define UPDATE_QUIZ 3
+#define DELETE_QUIZ 4
+#define EXIT 0
+
 //Structure for coordinator
 typedef struct coordinator
 {
