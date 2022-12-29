@@ -27,6 +27,7 @@ typedef struct contestant
 //contestant functions
 contestant *Contestant();
 contestant *registration_contestant(contestant*);
+contestant *user_login(char *user_id , char *pswd ,contestant *c_root )
 void adding_contestant_to_file();
 void save_contestant_data_into_file(contestant *);
 contestant data_extraction_from_contestant_file(char*, contestant);
@@ -35,6 +36,9 @@ contestant *continue_quize_game(char *, char *,contestant *,question_ans *);
 void save_score_to_file(contestant*);
 void check_score_contestants(contestant*);
 void rules();
+int get_ans(char);
 void first_round_of_quiz_game(contestant *,int);
 void second_round_of_quiz_game(contestant *,int );
 int int_ans_choice(int,int);
+int ans(int);
+
