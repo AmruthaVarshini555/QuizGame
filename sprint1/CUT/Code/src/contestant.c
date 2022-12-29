@@ -320,13 +320,13 @@ contestant *continue_quize_game(char *user_id , char *pswd,contestant *c_root ,q
 			if(user->check == 1)
 			{
 				printf("You are already Played the Second round \n");
-				printf("you are score is %d\n",user->second_socre);
+				printf("you are score is %d\n",user->second_score);
 			}
 			design();
 			printf("welcome to second round %s\n",user->user_name);
 			design();
 			first_round_of_quiz_game(user , 2);
-			printf("second round marks is %d\n",user->second_socre);
+			printf("second round marks is %d\n",user->second_score);
 		}
 		else
 		{
@@ -345,10 +345,10 @@ void check_score_contestants(contestant *p)
 	{
 		if(p->check == 1)
 		{
-			printf("%s first round socre is %d\n",p->user_name ,p->first_score );
+			printf("%s first round score is %d\n",p->user_name ,p->first_score );
 			if(p->check_2 == 1)
 			{
-				printf("%s first round socre is %d\n",p->user_name ,p->second_socre);
+				printf("%s first round score is %d\n",p->user_name ,p->second_score);
 			}
 			else
 			{
@@ -362,8 +362,8 @@ void check_score_contestants(contestant *p)
 //Saving score to file 
 void save_score_to_file(contestant *p)
 {
-	char *str = "contestant_socre_card.txt";
-	char *str_co = "contestant_login_history.txt";
+	char *str = "contestant_score_card.txt";
+	char *str_co = "history.txt";
 	FILE *fptr = fopen(str,"a");
 	FILE *fptr_login =  fopen(str_co,"a");
 	if(fptr == NULL || fptr_login == NULL)
@@ -379,7 +379,7 @@ void save_score_to_file(contestant *p)
 			{
 				if(p->check_2 == 1)
 				{
-					fprintf(fptr,"%s,%s,%d,%d\n",p->user_name , p->user_id , p->first_score , p->second_socre);
+					fprintf(fptr,"%s,%s,%d,%d\n",p->user_name , p->user_id , p->first_score , p->second_score);
 					fprintf(fptr_login,"%s,%s,%s\n",p->user_name , p->user_id ,"LOGIN");		
 				}
 				else
@@ -478,10 +478,10 @@ contestant *play_quiz(char *user_id , char *pswd , contestant *c_root)
 	if(QA_root[0] == NULL)
 	{
 		return NULL;
-	 	printf("First Round Qustion are not available\n");
+	 	printf("First Round Question are not available\n");
 	 }	
 	 if(QA_root[1] == NULL) 
-		printf("second Round Qustion are not available\n");
+		printf("second Round Question are not available\n");
 	if(user_id == NULL)
 	{
 		printf("No user are found\n");
@@ -596,7 +596,7 @@ void second_round_of_quiz_game(contestant *c_root , int round)
 			else if(q->check_flag == 2)
 			{
 				for(int i = 0 ; i < 4 ; i++)
-					printf("%c) %d\n",65+i,q->ans_intiger[i]);
+					printf("%c) %d\n",65+i,q->ans_integer[i]);
 				//scanf(" %c",&ch);
 				if(q->ans_int == ans(1))
 				{
