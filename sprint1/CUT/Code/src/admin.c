@@ -44,7 +44,7 @@ void admin()
 		printf("4) Exit\n");
 		design();
 		//scanf("%d",&ch);
-		ch =int_ans_choice(1,4);
+		ch =int_ans_choice(0,3);
 		switch(ch)
 		{
 			case MANAGE_COORDINATOR:
