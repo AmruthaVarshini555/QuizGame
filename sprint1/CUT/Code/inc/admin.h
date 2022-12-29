@@ -44,5 +44,4 @@ int alpha_validator(char *);
 int password_validation(char *);
 int phone_validation(char *);
 int email_validation(char *);
-int ans(int);
-int int_ans_choice(int,int);
+
