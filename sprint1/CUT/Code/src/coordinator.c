@@ -3,6 +3,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include"coordinator.h"
+#include"contestant.h"
+#include"admin.h"
 extern coordinator *c_root ;
 question_ans question_extraction_from_file(char * , question_ans);
 question_ans *QA_root[2] ;
@@ -22,7 +24,7 @@ void Display(question_ans *root)
 		else if(q->check_flag == 2)
 		{
 			for(int i = 0 ; i < 4 ; i++)
-				printf("%c) %d\n",65+i,q->ans_intiger[i]);
+				printf("%c) %d\n",65+i,q->ans_integer[i]);
 		}
 		if(q->ans_int == 1)
 			printf("ans:%c\n",'A');
@@ -65,7 +67,7 @@ void Coordinator()
 		scanf("%d",&ch);
 		switch(ch)
 		{
-			case 1: //updating coordinator details
+			case UPDATE_COORDINATOR: //updating coordinator details
 				printf("enter user-id \n");
 				while(1)
 				{
@@ -82,7 +84,7 @@ void Coordinator()
 				else 
 					printf("updated succesfully\n");
 				break;
-			case 2: //add new quiz for round 1 and round2
+			case ADD_QUIZ: //add new quiz for round 1 and round2
 				printf("enter 1 for first round\n");
 				printf("enter 2 for second round\n");
 				ch = int_ans_choice(1,2);	
@@ -99,7 +101,7 @@ void Coordinator()
 					QA_root[1] = add_new_quiz(QA_root[1],quize_file_2);	
 				}
 				break ;
-			case 3: //Updating quiz for round1 and round2
+			case UPDATE_QUIZ: //Updating quiz for round1 and round2
 				printf("enter 1 for first round\n");
 				printf("enter 2 for second round\n");
 				ch = int_ans_choice(1,2);	
@@ -120,7 +122,7 @@ void Coordinator()
 					save_QA_info_into_file(QA_root[1],quize_file_2);	
 				}	
 				break ;
-			case 4: //Deletion of quiz for round 1 or round2
+			case DELETE_QUIZ: //Deletion of quiz for round 1 or round2
 				printf("enter 1 for first round\n");
 				printf("enter 2 for second round\n");
 				ch = int_ans_choice(1,2);	
@@ -139,7 +141,7 @@ void Coordinator()
 					save_QA_info_into_file(QA_root[0] , quize_file_2);
 				}
 				break;
-			case 5://Displaying questions for round1 and round2
+			case DISPLAY_QUIZ://Displaying questions for round1 and round2
 				printf("enter 1 for first round\n");
 				printf("enter 2 for second round\n");
 				ch = int_ans_choice(1,2);	
@@ -150,7 +152,7 @@ void Coordinator()
 				else
 					Display(QA_root[1]);
 				break;
-			case 6:
+			case EXIT:
 				exit_flag = 1;
 				break;
 		}
@@ -234,7 +236,7 @@ question_ans  question_extraction_from_file(char *str , question_ans q_a_data)
 					}
 					else if(index <= 3)
 					{
-						q_a_data.ans_intiger[index++] = str_num  ;
+						q_a_data.ans_integer[index++] = str_num  ;
 						//printf("int value: %d and index value %d\n",q_a_data.ans_intiger[index++],index-1);
 					}	
 				}
@@ -358,7 +360,7 @@ question_ans *update_quiz(question_ans *QA_root ,char* question_str)
 			{
 				for(int i = 0 ; i < 4 ; i++)
 				{
-					printf("%d) %d\n",i,p->ans_intiger[i]);
+					printf("%d) %d\n",i,p->ans_integer[i]);
 				}	
 			}
 			printf("enter y to update the question\n");
@@ -384,7 +386,7 @@ question_ans *update_quiz(question_ans *QA_root ,char* question_str)
 					printf("enter option in intiger format only\n");
 					for(int i = 0 ; i < 4 ; i++)
 					{
-						scanf("%d",&p->ans_intiger[i]);	
+						scanf("%d",&p->ans_integer[i]);	
 					}
 				}
 			}
@@ -432,7 +434,7 @@ void save_QA_info_into_file(question_ans *QA_root , char *str)
 					fprintf(fptr,"%d,%s,",p->q_num,p->question);
 					for(int i = 0 ; i < 4 ; i++)
 					{
-						fprintf(fptr,"%d,",p->ans_intiger[i]);
+						fprintf(fptr,"%d,",p->ans_integer[i]);
 					}
 					//printf("ans: %d\n",p->ans_int);
 					fprintf(fptr,"%d\n",p->ans_int);	
@@ -522,7 +524,7 @@ int *lookup_question(question_ans *source,int id ,int *index)
 			else if(q->check_flag == 2)
 			{
 				for(int i = 0 ; i < 4 ; i++)
-					printf("%c) %d\n",65+i,q->ans_intiger[i]);
+					printf("%c) %d\n",65+i,q->ans_integer[i]);
 			}
 			break;
 		}
@@ -597,7 +599,7 @@ int int_ans_choice(int n , int m)
 		while(1)
 		{
 			scanf("%s",temp);
-			if(intiger_validation(temp) == 0)
+			if(integer_validation(temp) == 0)
 			{
 				ch = atoi(temp);
 				if(ch >= n && ch <= m)
