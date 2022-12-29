@@ -41,10 +41,10 @@ void admin()
 		printf("1) Manage Coordinator details\n");
 		printf("2) Manage Contestant details\n");
 		printf("3) Logout and exit\n");
-		printf("0) Exit\n");
+		printf("4) Exit\n");
 		design();
 		//scanf("%d",&ch);
-		ch =int_ans_choice(1,3);
+		ch =int_ans_choice(1,4);
 		switch(ch)
 		{
 			case MANAGE_COORDINATOR:
@@ -121,7 +121,7 @@ void admin()
 					ch =int_ans_choice(1,3);
 					switch(ch)
 					{
-						case DELETE_CONTESTANT:
+						case 1:
 							printf("enter user-id \n");
 							while(1)
 							{
@@ -134,9 +134,9 @@ void admin()
 							co_root = delete_contestant(co_root ,user_id);
 							save_contestant_data_into_file(co_root);
 							break ;
-						case VIEW_CONTESTANT: view_contestant();
+						case 2: view_contestant();
 							break;
-						case PREVIOUS:
+						case 3:
 							exit_flag_2 = 1;	
 					}
 					
