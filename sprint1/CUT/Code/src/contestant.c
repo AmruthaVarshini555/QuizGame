@@ -1,8 +1,11 @@
 //Program for contestant module
 #include<stdio.h> 
 #include<stdlib.h>
-#include"contestant.h"
 #include <time.h>
+#include<string.h>
+#include"contestant.h"
+#include"coordinator.h"
+#include"admin.h"
 extern question_ans *QA_root[2] ;
 contestant *co_root = NULL;
 //Menu for the contestant
@@ -46,12 +49,12 @@ contestant *Contestant()
 		}
 		switch(ch)
 		{
-			case 1:
+			case CONTESTANT_REGISTRATION:
 				adding_contestant_to_file();
 				co_root = NULL;
 				co_root = registration_contestant(co_root);
 				break;	
-			case 2: 
+			case PLAY_QUIZ: 
 				printf("enter the user-id \n");
 				while(1)
 				{
@@ -73,7 +76,7 @@ contestant *Contestant()
 				play_quiz(user_id , pswd , co_root);
 				save_score_to_file(co_root);
 				break;
-			case 3: 
+			case CONTINUE_QUIZ: 
 				printf("enter the user-id \n");
 				while(1)
 				{
@@ -94,13 +97,13 @@ contestant *Contestant()
 				}
 				continue_quize_game(user_id , pswd ,co_root,QA_root[1]);	
 				break;
-			case 4: 
+			case CHECK_SCORE: 
 				check_score_contestants(co_root);
 				break;
-			case 5:
+			case RULES:
 				rules();
 				break;
-			case 6:
+			case EXIT:
 				exit_flag = 1;
 				break;	
 		}
